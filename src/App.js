@@ -24,6 +24,7 @@ function App() {
         </a>
       </header>
       <button onClick={() => ReactGA.event("test_click_react4")} >Test</button>
+      <button onClick={() => ReactGA.event("test_click_react4_2")} >Test2</button>
     </div>
   );
 }
