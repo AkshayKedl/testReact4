@@ -36,9 +36,11 @@ function App() {
           Learn React
         </a> */}
       </header>
-      <button onClick={() => ReactGA.event("test_click_react4")} >Test</button>
-      <button onClick={() => ReactGA.event("test_click_react4_2")} >Test2</button>
+      <button onClick={() => ReactGA.event("test_click_react4")} >Test Event</button>
+      <button onClick={() => ReactGA.event("test_click_react4_2")} >Test Event 2</button>
+      <div style={{margin:20}} >
       <button onClick={() => login()} >Sign in with Google 🚀{' '}</button>
+      </div>
       
     </div>
   );
