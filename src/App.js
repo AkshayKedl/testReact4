@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect } from 'react';
 import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin, useGoogleOneTapLogin } from '@react-oauth/google';
 
 
 function App() {
@@ -19,12 +19,12 @@ function App() {
   const login = useGoogleLogin({
     onSuccess: tokenResponse => console.log(tokenResponse),
   });
-  
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -34,7 +34,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
       <button onClick={() => ReactGA.event("test_click_react4")} >Test</button>
       <button onClick={() => ReactGA.event("test_click_react4_2")} >Test2</button>
