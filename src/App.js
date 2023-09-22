@@ -3,7 +3,10 @@ import './App.css';
 import { useEffect } from 'react';
 import ReactGA from "react-ga4";
 import TagManager from 'react-gtm-module';
-import { useGoogleLogin, useGoogleOneTapLogin } from '@react-oauth/google';
+import { useGoogleLogin, useGoogleOneTapLogin, hasGrantedAllScopesGoogle } from '@react-oauth/google';
+
+
+
 
 
 function App() {
@@ -11,14 +14,22 @@ function App() {
     gtmId: 'GTM-XXXXXX'
 }
 
-  useEffect(() => {
-    ReactGA.initialize("G-ERGQGM3LY6");
-    TagManager.initialize('GT-M9CKK23W')
-  },[])
+const login = useGoogleLogin({
+  onSuccess: tokenResponse => console.log(tokenResponse),
+  scope: 'https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/analytics.edit https://www.googleapis.com/auth/service.management'
+});
 
-  const login = useGoogleLogin({
-    onSuccess: tokenResponse => console.log(tokenResponse),
-  });
+
+// function triggerLogin() {
+//   login();
+// }
+
+  // useEffect(() => {
+  //   // ReactGA.initialize("G-ERGQGM3LY6");
+  //   // TagManager.initialize('GT-M9CKK23W')
+  //   triggerLogin();
+  //   console.log('called')
+  // },[])
 
   return (
     <div className="App">
@@ -36,8 +47,8 @@ function App() {
           Learn React
         </a> */}
       </header>
-      <button onClick={() => ReactGA.event("test_click_react4")} >Test Event</button>
-      <button onClick={() => ReactGA.event("test_click_react4_2")} >Test Event 2</button>
+      {/* <button onClick={() => ReactGA.event("test_click_react4")} >Test Event</button>
+      <button onClick={() => ReactGA.event("test_click_react4_2")} >Test Event 2</button> */}
       <div style={{margin:20}} >
       <button onClick={() => login()} >Sign in with Google 🚀{' '}</button>
       </div>
